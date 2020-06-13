@@ -11,7 +11,7 @@ Use `pip install` for the installation. Required packages are:
 
 ## Code Execution
 Before executing the code, please verify these two facts:
-- [ ] Files `collected_reviews.xlsx` and `error_reviews.txt` are not in the current folder, either deleted or a backup is kept.
+- [ ] Files naming like `collected_reviews<sheet_name>.xlsx` and `error_reviews.txt` are not in the current folder, either deleted or a backup is kept.
 - [ ] marked_apps.xlsx is in the same folder.
 
 The code will ask for number of reviews to collect per app. Put it 3000/5000 as per requirement.
