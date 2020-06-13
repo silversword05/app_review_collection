@@ -6,6 +6,7 @@ Use `pip install` for the installation. Required packages are:
 - pandas
 - google_play_scraper
 - openpyxl
+- xlrd
 - wheel
 
 ## Code Execution
