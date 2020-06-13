@@ -3,10 +3,10 @@ from google_play_scraper import Sort, reviews
 from openpyxl import load_workbook
 from os import path
 
+sheet_names = ["VR+AR+Edu", "VR", "VR+Edu", "Edu", "AR", "AR+Edu", "VR+AR"]
+
 
 def collect_reviews(count=10000):
-    sheet_names = ["VR+AR+Edu", "VR", "VR+Edu", "Edu", "AR", "AR+Edu", "VR+AR"]
-
     for sheet_name in sheet_names:
         df = pd.read_excel('marked_apps.xlsx', sheet_name=sheet_name)
         df_new = pd.DataFrame(columns=["app_id", "title", "user_name", "content", "score", "thumbsUpCount", "reviewCreatedVersion", "time"])
@@ -22,9 +22,9 @@ def collect_reviews(count=10000):
                 f = open('error_reviews.txt', 'a')
                 f.write(row['app_id'] + '\n')
                 f.close()
-        writer = pd.ExcelWriter('collected_reviews.xlsx', engine='xlsxwriter')
+        writer = pd.ExcelWriter('collected_reviews' + sheet_name + '.xlsx', engine='xlsxwriter')
         try:
-            book = load_workbook('collected_reviews.xlsx')
+            book = load_workbook('collected_reviews' + sheet_name + '.xlsx')
             writer.book = book
         except:
             pass
@@ -38,9 +38,11 @@ def collect_reviews(count=10000):
         print("Sheet name completed", sheet_name, '\n')
 
 
-if path.isfile('collected_reviews.xlsx') or path.isfile('error_reviews.txt'):
-    print('Please keep a backup or delete the following files before running the code. Remove from the current folder.')
-    print('collected_reviews.xlsx and error_reviews.txt')
-    exit(0)
+for sheet_nam in sheet_names:
+    file_name = 'collected_reviews' + sheet_nam + '.xlsx'
+    if path.isfile(file_name) or path.isfile('error_reviews.txt'):
+        print('Please keep a backup or delete the following files before running the code. Remove from the current folder.')
+        print(file_name + ' and error_reviews.txt')
+        exit(0)
 cnt = int(input("Enter the number of reviews to collect per app "))
 collect_reviews(count=cnt)
