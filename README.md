@@ -12,6 +12,7 @@ Use `pip install` for the installation. Required packages are:
 Before executing the code, please verify these two facts:
 - [ ] Files `collected_reviews.xlsx` and `error_reviews.txt` are not in the current folder, either deleted or a backup is kept.
 - [ ] marked_apps.xlsx is in the same folder.
+The code will ask for number of reviews to collect per app. Put it 3000/5000 as per requirement.
 
 ## Code Failure
 The code is well equiped with try-catch block and should not fail. In case of failure (will fail most likely if the internet connection is interrupted), remove the files `collected_reviews.xlsx` and `error_reviews.txt` (keep a backup if necessary) from the current directory/folder and rerun the code. 
